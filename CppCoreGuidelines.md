@@ -520,18 +520,18 @@ Any programmer should know the basics of the foundation libraries of the project
 Any programmer using these guidelines should know the [guidelines support library](#S-gsl), and use it appropriately.
 
 ##### Example
-
-    change_speed(double s);   // bad: what does s signify?
-    // ...
-    change_speed(2.3);
-
+```cpp
+change_speed(double s);   // bad: what does s signify?
+// ...
+change_speed(2.3);
+```
 A better approach is to be explicit about the meaning of the double (new speed or delta on old speed?) and the unit used:
-
-    change_speed(Speed s);    // better: the meaning of s is specified
-    // ...
-    change_speed(2.3);        // error: no unit
-    change_speed(23m / 10s);  // meters per second
-
+```cpp
+change_speed(Speed s);    // better: the meaning of s is specified
+// ...
+change_speed(2.3);        // error: no unit
+change_speed(23m / 10s);  // meters per second
+```
 We could have accepted a plain (unit-less) `double` as a delta, but that would have been error-prone.
 If we wanted both absolute speed and deltas, we would have defined a `Delta` type.
 
