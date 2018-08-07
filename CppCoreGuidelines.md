@@ -484,35 +484,35 @@ The second version leaves the reader guessing and opens more possibilities for u
 ##### Example; bad
 
 This loop is a restricted form of `std::find`:
-
-    void f(vector<string>& v)
-    {
-        string val;
-        cin >> val;
-        // ...
-        int index = -1;                    // bad, plus should use gsl::index
-        for (int i = 0; i < v.size(); ++i) {
-            if (v[i] == val) {
-                index = i;
-                break;
-            }
+```cpp
+void f(vector<string>& v)
+{
+    string val;
+    cin >> val;
+    // ...
+    int index = -1;                    // bad, plus should use gsl::index
+    for (int i = 0; i < v.size(); ++i) {
+        if (v[i] == val) {
+            index = i;
+            break;
         }
-        // ...
     }
-
+    // ...
+}
+```
 ##### Example; good
 
 A much clearer expression of intent would be:
-
-    void f(vector<string>& v)
-    {
-        string val;
-        cin >> val;
-        // ...
-        auto p = find(begin(v), end(v), val);  // better
-        // ...
-    }
-
+```cpp
+void f(vector<string>& v)
+{
+    string val;
+    cin >> val;
+    // ...
+    auto p = find(begin(v), end(v), val);  // better
+    // ...
+}
+```
 A well-designed library expresses intent (what is to be done, rather than just how something is being done) far better than direct use of language features.
 
 A C++ programmer should know the basics of the standard library, and use it where appropriate.
